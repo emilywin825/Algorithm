@@ -2,7 +2,6 @@
 
 n=int(input())
 right=list(map(int,input().split()))
-left=[i for i in range(1,n+1)]
 dp=[0]*n
 dp[1]=1
 
