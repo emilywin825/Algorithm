@@ -3,7 +3,7 @@ step=[int(input()) for _ in range(n)]
 dp=[0]*(n)
 
 
-if n<=2:
+if n<3:
     print(sum(step))
 else:
     dp[0]=step[0]
