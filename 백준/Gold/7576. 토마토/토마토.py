@@ -8,7 +8,7 @@ def bfs():
         for i in range(4):
             xx=x+dx[i]
             yy=y+dy[i]
-            if 0<=xx<n and 0<=yy<m and visited[xx][yy]==0 and tomato[xx][yy]==0:
+            if 0<=xx<n and 0<=yy<m and tomato[xx][yy]==0:
                 visited[xx][yy]=visited[x][y]+1
                 tomato[xx][yy]=1
                 q.append((xx,yy))
@@ -36,7 +36,4 @@ for t in tomato:
 else:
     for v in visited:
         maxx=max(max(v),maxx)
-    if maxx==0:
-        print(0)
-    else:
-        print(maxx)
+    print(maxx)
