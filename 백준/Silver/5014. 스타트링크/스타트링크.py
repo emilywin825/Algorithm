@@ -22,7 +22,7 @@ def bfs(start):
     return -1
     
 f,s,g,u,d=map(int,input().split())
-visited=[0]*(1000001)
+visited=[0]*(f+1)
 res=bfs(s)
 if res==-1:
     print("use the stairs")
