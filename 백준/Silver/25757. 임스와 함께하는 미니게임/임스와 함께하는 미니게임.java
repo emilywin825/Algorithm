@@ -3,15 +3,24 @@
 //임스가 플레이할 게임의 종류
 //임스와는 한번만 플레이할 수 있음
 //return 최대 몇번 임스와 플레이할 수 있는지
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import java.util.Set;
+import java.util.HashSet;
+import java.util.StringTokenizer;
+
+
 public class Main{
     public static void main(String[] args)throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String input=br.readLine();
-        String[] inputArr=input.split(" ");
-        int n=Integer.parseInt(inputArr[0]);
-        String gameType=inputArr[1];
+       
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        
+        int n=Integer.parseInt(st.nextToken());
+        String gameType=st.nextToken();
+        
         Set<String> playerList = new HashSet<>();
         
         for(int i=0;i<n;i++){
