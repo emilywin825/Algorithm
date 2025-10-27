@@ -11,44 +11,27 @@ public class Main{
         int p=Integer.parseInt(st.nextToken());
         if(n==0) {
             System.out.println("1");
-            System.exit(0);
+            return;
         }
 
         st = new StringTokenizer(br.readLine());
-        List<Integer> score = new ArrayList<>();
-        while(st.hasMoreTokens()){
-            score.add(Integer.parseInt(st.nextToken()));
+        int[] score = new int[n];
+        for(int i=0;i<n;i++){
+            score[i]=Integer.parseInt(st.nextToken());
         }
-        score.add(tesuScore);
-        score.add(2000000001);
-        score.sort(Comparator.reverseOrder());
         
-        int rank=0;
-        int sameScore=0;
-
-        for(int i=1;i<score.size();i++){
-            int currentScore=score.get(i);
-            if(currentScore<tesuScore) {
-                break;
-            }
-            if(rank>=p) {
-                rank=-1;
-                break;
-            }
-            else if(currentScore==tesuScore){
-                sameScore+=1;
-            }
-            else if(currentScore>tesuScore){
-                rank+=1;
-            }
+        Arrays.sort(score);
+        int rank=1;
+        
+        for(int i=n-1;i>=0;i--){
+            if(score[i]>tesuScore) rank++;
+            else break;
         }
-
-        if(rank+sameScore>p) {
-            rank=-1;
-        }else rank+=1;
-        if(rank==0) rank=-1;
-
-        System.out.println(rank);
-
+        
+        if(n==p && score[0]>=tesuScore){
+            System.out.println(-1);
+        }else{
+            System.out.println(rank);
+        }
     }
 }
