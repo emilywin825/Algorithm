@@ -1,17 +1,22 @@
 import java.util.*;
-// O(n)
+
 public class Solution {
     public int[] solution(int []arr) {
-        List<Integer> answer = new ArrayList<>();
+        Deque<Integer> deque = new ArrayDeque<>();
         int target=-1;
         
-        for(int i=0;i<arr.length;i++){
-            if(target!=arr[i]){
-                target=arr[i];
-                answer.add(target);
+        for(int i : arr){
+            if(target!=i){
+                deque.offerLast(i);
+                target=i;
             }
         }
         
-        return answer.stream().mapToInt(Integer::intValue).toArray();
+        int[] answer=new int[deque.size()];
+        for(int i=0;i<answer.length;i++ ){
+            answer[i]=deque.pollFirst();
+        }
+        
+        return answer;
     }
 }
