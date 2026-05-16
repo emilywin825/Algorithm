@@ -2,26 +2,20 @@ import java.util.*;
 
 class Solution {
     boolean solution(String s) {
+        Deque<Character> que = new ArrayDeque<>();
         boolean answer = true;
+        char[] arrayS = s.toCharArray();
         
-        //스택 사용
-        Deque<String> stack = new ArrayDeque<>();
-        for(int i=0;i<s.length();i++){
-            String now = s.substring(i,i+1);
-            
-            if(now.equals("(")||stack.size()==0){
-                stack.push(now);
+        for(char c : arrayS){
+            if(c=='('){
+                que.push(c);
             } else{
-                if(!stack.pop().equals("(")){
+                if(que.size()==0 || !(que.pop()=='('))
                     return false;
-                }
             }
         }
-        
-        if(stack.size()>0){
-            return false;
-        }
-        
-        return answer;
+        if(que.size()==0)
+            return answer;
+        return false;
     }
 }
